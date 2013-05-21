@@ -1,4 +1,4 @@
-# Django settings for dj2 project.
+# Django settings for proj project.
 import os
 
 DEBUG = True
@@ -114,10 +114,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'dj2.urls'
+ROOT_URLCONF = 'proj.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'dj2.wsgi.application'
+WSGI_APPLICATION = 'proj.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
