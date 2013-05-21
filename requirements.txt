@@ -1,2 +1,5 @@
 Django==1.5.1
 docutils==0.10
+dj-database-url==0.2.1
+psycopg2==2.5
+gunicorn==0.17.4
