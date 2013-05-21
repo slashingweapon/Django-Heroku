@@ -36,5 +36,5 @@ nosetests.xml
 .pydevproject
 
 # Triviata for me...
-local.env
+*.env
 static/*
