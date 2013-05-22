@@ -54,12 +54,38 @@ Now run collectstatic and syncdb, using Foreman.  Foreman was included with your
 
 Now run the server.  
 
+    foreman start
+    
+You should be able to access your application on [http://127.0.0.1:5000/admin/](http://127.0.0.1:5000/admin/).
+
 ## Running the Project in Heroku
+
+If your project isn't already in Git, now is a good time to initialize your repo.
+
+    git init
+
+Create the Heroku app.  As a side-effect this will add a remote named "heroku" to your git repo.  Then configure your static directory path.
+
+    heroku apps:create [appname]
+    heroku config:set DJ_STATIC_DIR=/app/static
+    
+Provision a dev database, too.  This will automatically set the DATABASE_URL variable.
+
+    heroku addons:add heroku-postgresql:dev
+
+Now you can push your repo, and watch all the lines of output.  Then run syncdb through heroku.
+
+    git push heroku master
+    heroku run python manage.py syncdb
+
+Finally, you can provision a web worker and try opening your app in a browser.
+
+    heroku ps:scale web=1
+    heroku apps:open
+
 
 ## Maintaining the Project
 
 As you add new dependencies, remember to update your `requirements.txt` file.
 
-Any configuration differences between your development environment and your staging/production environment need to be separated out into environment-based configurations.  A Heroku application is, at its heart, a combination of your slug plus your environment.
-
-You can add processes to the 
+Any configuration differences between your development environment and your staging/production environment need to be separated out into environment-based configurations.  A Heroku application is, at its heart, a combination of your slug plus the config environment.
